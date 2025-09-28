@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ترس از سقوط عشق</title>
+  <!-- Vazirmatn -->
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Sahel -->
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v1.0.0/dist/font-face.css" rel="stylesheet">
+
+<!-- Shabnam -->
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/dist/font-face.css" rel="stylesheet">
+
+<!-- Lalezar -->
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+
+<!-- IranNastaliq -->
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/iran-nastaliq-font@v2.0.0/dist/font-face.css" rel="stylesheet">
+  <style>
+:root {
+  --bg-light: #fdf6e3;
+  --bg-dark: #2e2e2e;
+  --text-light: #333;
+  --text-dark: #f5f5f5;
+  --accent: #b58863;
+  --card-bg-light: rgba(255,248,240,0.95);
+  --card-bg-dark: rgba(62,62,62,0.95);
+}
+* {
+  transition: background-color 0.9s ease, color 0.9s ease, background 0.5s ease;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  /* font-family:'Vazirmatn',sans-serif; ← این را پاک کنید */
+}
+  body {
+  background-size: cover;
+  color:var(--text-light);
+  transition:all 0.4s;
+  overflow-x:hidden;
+  background: #FFEECD no-repeat center;
+  font-family: Vazirmatn, Tahoma, 'IranNastaliq', sans-serif; /* پایه */
+  transition: font-family 0.5s ease;
+}
+
+  @font-face {
+  font-family: "MyFont"; /* اسم دلخواه برای فونت */
+  src: url("font/font3.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Splash */
+/* Splash */
+#splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFEECD;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: opacity 0.5s;
+  color: #fff;
+  text-align: center;
+}
+
+#splashLogo {
+  width: 320px;  /* اندازه دلخواه لوگو */
+  margin-bottom: 1rem;
+}
+  /*dark mod css*/
+  /* حالت دارک برای صفحه‌خوان */
+body.dark #reader {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+body.dark #reader .page-container {
+  background: var(--bg-dark);
+}
+
+body.dark #reader .page {
+  color: var(--text-dark);
+}
+
+body.dark #reader .reader-header {
+  background: #444;   /* رنگ تیره هدر */
+  color: #fff;
+}
+
+body.dark #reader .reader-bottom {
+  background: #555;
+  color: var(--text-dark);
+}
+
+#splash.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+  #splash h1{font-family: "MyFont"; font-size:3rem}
+  #themeToggle { transition: transform 0.3s; }
+#themeToggle:hover { transform: scale(1.2); }
+.chapter-card:hover{
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+  button {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+  body.dark {
+  background: var(--bg-dark) url('imge/bgr-dark.jpg') no-repeat center; 
+  color: var(--text-dark);
+}
+
+body.dark .chapter-card {
+  background: var(--card-bg-dark);
+  color: var(--text-dark);
+  border: 1px solid #F5F5F5;
+}
+
+body.dark header {
+  background: linear-gradient(90deg, #3e3e3e, #1e1e1e);
+  color: var(--text-dark);
+}
+
+body.dark .sidebar {
+  background: var(--card-bg-dark);
+  color: var(--text-dark);
+  border-left: 2px solid #fff;
+  box-shadow: 0 0 10px #fff;
+}
+  /* زیرمنوی فصول در دارک مود */
+body.dark .submenu {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+body.dark .submenu li {
+  color: var(--text-dark);
+}
+
+body.dark .submenu li:hover {
+  color: var(--accent);
+}
+body.dark .sbmenu {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+body.dark .sbmenu li {
+  color: var(--text-dark);
+}
+
+body.dark .sbmenu li:hover {
+  color: var(--accent);
+}
+body.dark .reader-header {
+  background: #444;
+  color: #fff;
+}
+  body.dark {
+  background:#5E6062 url('imge/bgr.jpg') no-repeat;
+  background-size: cover;
+}
+/* Header */
+header{display:flex;background:var(--accent);justify-content:space-between;align-items:center;padding:0.8rem 1rem;color:#ff;position:sticky;top:0;z-index:10;}
+header h1{font-size:2.2rem;font-family: "MyFont"; color:#FFEECD;}
+header .top-buttons button {
+  background: rgba(255,255,255,0.2);
+  color: #ff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+header .top-buttons button:hover {
+  background: rgba(255,255,255,0.5);
+  transform: scale(1.1);
+}
+  .header {
+  display: flex;
+  align-items: center;
+  gap: 10px;        /* فاصله بین لوگو و اسم کتاب */
+  padding: 10px 20px;
+  border-bottom: 2px solid #333;
+}
+  body.dark .header {
+  background: #222;
+  border-bottom: 2px solid #F5F5F5;
+    box-shadow: 0 0 10px #F5F5F5;
+}
+  body.dark .header h1{color:#fff;}
+  /* دکمه‌های کنترل فونت در دارک مود */
+body.dark #fontDecrease,
+body.dark #fontIncrease {
+  background: rgba(100,100,100,0.8);
+  color: #fff;
+}
+  
+
+body.dark #fontDecrease:hover,
+body.dark #fontIncrease:hover {
+  background: rgba(150,150,150,1);
+}
+
+/* دکمه‌های قبلی / بعدی در دارک مود */
+body.dark .reader-bottom button {
+  background: #555;
+  color: #fff;
+}
+
+body.dark .reader-bottom button:hover {
+  background: #777;
+  transform: scale(1.05);
+}
+  body.dark #readerThemeToggle button{
+    background: rgba(100,100,100,0.8);
+  color: #fff;
+  }
+  body.dark #reader .reader-header button{
+    background: rgba(100,100,100,0.8);
+  color: #fff;
+  }
+
+/* Sidebar */
+.sidebar{position:fixed;top:0;right:0;width:250px;height:100%;background:#FFF1D7;padding:0.7rem 1rem;box-shadow:-3px 0 8px rgba(0,0,0,0.2);transition:transform 1s;z-index:20;border-left:2px solid #555;}
+.sidebar.hidden{transform:translateX(100%);}
+.sidebar ul{list-style:none;}
+.sidebar li{padding:0.5rem 0;cursor:pointer;transition:0.2s;}
+.sidebar li:hover{color:var(--accent);}
+.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:15;display:none;}
+.overlay.active{display:block;}
+.sidebar ul { list-style:none; padding:0; }
+.submenu {
+  padding-right: 2rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.submenu li {
+  padding: 0.4rem 1rem;
+  font-size: 0.95rem;
+  color: #455;
+}
+.submenu li:hover { color: var(--accent); }
+
+/* کلاس برای باز کردن زیرمنو */
+.submenu.show {
+  max-height: 450px; /* ارتفاع کافی برای نشان دادن کل فصل‌ها */
+}
+  .sbmenu {
+  display: none;
+  margin-right: 5px; /* چون RTL است */
+  list-style: none;
+  padding: 5px 0;
+}
+
+.sbmenu li {
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background 0.4s;
+  color: #455;
+}
+
+.sbmenu li:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+body.dark .sbmenu li:hover {
+  background: rgba(255,255,255,0.1);
+}
+  .modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding-top:110px;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background: var(--bg, #fff);
+  margin: 10% auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  border: 1px solid #555;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px #fff;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal-content button {
+  background: var(--accent, #795548);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 130px;
+}
+  body.dark .modal-content{
+    background: #1f1f1f;
+    color:#ddf;
+    border:1px solid #fff;
+  }
+  body.dark .modal-content button{
+    background:none;
+    border:1px solid #fff;
+  }
+/* Chapters grid */
+main{padding:1rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;position:relative;z-index:1;}
+.chapter-card{background:#FFDDCA;padding:0.3rem;border-radius:10px;transition:0.3s;cursor:pointer;max-width:500px;height:55px; border: 2px #333;}
+.chapter-card:hover{transform:translateY(-5px);box-shadow:0 10px 15px rgba(0,0,0,0.6);}
+.chapter-card h3{margin-bottom:0rem;font-size:1.1rem;}
+
+/* Reader */
+#reader{position:fixed;top:0;right:0;width:100%;height:100%;background:var(--card-bg-light);color:inherit;display:none;flex-direction:column;z-index:10;overflow:hidden;}
+.reader-header{padding:1rem;background:var(--accent);color:#fff;display:flex;justify-content:center;align-items:center;position:relative;}
+.reader-header h2{font-size:1.3rem;}
+.reader-header button{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:1.1rem;}
+
+  /* دکمه کاهش فونت در گوشه بالا چپ */
+/* دکمه کاهش فونت در گوشه بالا چپ */
+#fontDecrease {
+  position: fixed;
+  top: 42.5rem;
+  left: 7rem;
+  color: #fff;
+  padding: 0.25rem 0.5rem; /* کوچکتر شد */
+  font-size: 0.7rem;       /* کوچکتر شد */
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 100;
+  transition: all 0.3s;
+}
+#fontDecrease:hover { transform: scale(1.1); background: rgba(181,136,99,1); }
+
+/* دکمه افزایش فونت در گوشه بالا راست */
+#fontIncrease {
+  position: fixed;
+  top: 42.5rem;
+  right: 7rem;
+  color: #fff;
+  padding: 0.5rem 5rem; /* کوچکتر شد */
+  font-size: 0.8rem;       /* کوچکتر شد */
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 100;
+  transition: all 0.3s;
+}
+#fontIncrease:hover { transform: scale(1.1); background: rgba(181,136,99,1); }
+  #fontControls button {
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+}
+#fontControls button:hover {
+  background: rgba(181,136,99,1);
+  transform: scale(1.1);
+}
+/* Page container */
+.page-container{flex:1;display:block;overflow:hidden;position:relative;padding:100px 2rem 2rem 2rem;}
+.page{
+  margin: 0px 80px 40px 20px;
+  position:absolute;
+  overflow-y:auto;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  padding: 10px 50px 90px 10px;
+  line-height:1.9;
+  transition:transform 0.3s;
+  white-space:pre-wrap;
+  font-size: clamp(13px, 2.5vw, 18px);
+}
+  .page p {
+  all: unset;              /* تمام استایل پیش‌فرض مرورگر حذف می‌شود */
+  display: block;          /* مثل پاراگراف رفتار کند */
+  margin: 0;               /* هیچ فاصله‌ی بالا/پایین نداشته باشد */
+  padding: 0;
+  line-height: 1.8;        /* فاصله بین خطوط متن */
+}
+
+.page p + p {
+  margin-top: 6px;         /* فقط وقتی پاراگراف پشت سر هم بود ۶px فاصله بده */
+}
+
+/* Bottom bar */
+.reader-bottom{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0.5rem 1rem;
+  background:var(--accent);
+}
+.reader-bottom .page-indicator{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:0.9rem;
+}
+  .reader-bottom button {
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: all 0.3s;
+}
+.reader-bottom button:hover {
+  background: #a06b4d;
+  transform: scale(1.05);
+}
+  #pageIndicator{
+    color:#fff;
+  }
+  #readerMenuToggle{
+    margin-left: 330px ;
+  }
+  #chapters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  padding: 30px;
+}
+
+.chapter-card {
+  background: #E9C293; /* رنگ کاغذی */
+  border: 2px solid #333;
+  padding: 4px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px #555;
+  /* افکت لبه‌های نامنظم (کاغذ بریده شده) */
+  clip-path: polygon(
+    0% 10%, 10% 0%, 90% 0%, 100% 10%,
+    100% 90%, 90% 100%, 10% 100%, 0% 90%
+  );
+}
+  #chapter0{
+    background: #F6CD9B; /* رنگ کاغذی */
+  border: 1px solid #333;
+  padding: 3px;
+  border-radius: 59px;
+  text-align: center;
+    max-width: 400px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px #555;
+  }
+
+.chapter-card:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  background: #fffdf6;
+}
+
+.chapter-card h3 {
+  margin: 0;
+  font-size: 19px;
+  font-family: "Vazirmatn", sans-serif;
+  color: #53e1b;
+}
+
+.chapter-card p {
+  margin-top: 0px;
+  font-size: 15px;
+  color: #33;
+}
+</style>
+</head>
+<body>
+<div id="splash">
+  <img src="imge/pic8.png" alt="لوگو کتاب" id="splashLogo">
+</div>
+
+<header class="header">
+<h1>ترس از سقوط عشق</h1>
+<div class="top-buttons">  <button onclick="toggleTheme()" id="themeToggle">🌙 / ☀️</button>
+<button id="menuToggle">☰</button>
+</div>
+</header>
+
+<div class="sidebar hidden" id="sidebar">
+  <h2>فهرست</h2>
+  <ul>
+    <li id="menuChapters">فصول ▸</li>
+    <ul id="submenuChapters" class="submenu hidden">
+      <li onclick="openChapter(1)">فصل اول</li>
+      <li onclick="openChapter(2)">فصل دوم</li>
+      <li onclick="openChapter(3)">فصل سوم</li>
+      <li onclick="openChapter(4)">فصل چهارم</li>
+       <li onclick="openChapter(1)">فصل اول</li>
+      <li onclick="openChapter(2)">فصل دوم</li>
+      <li onclick="openChapter(3)">فصل سوم</li>
+      <li onclick="openChapter(4)">فصل چهارم</li>
+       <li onclick="openChapter(1)">فصل اول</li>
+      <li onclick="openChapter(2)">فصل دوم</li>
+      <li onclick="openChapter(3)">فصل سوم</li>
+      <li onclick="openChapter(4)">فصل چهارم</li>
+       <li onclick="openChapter(3)">فصل سوم</li>
+      <li onclick="openChapter(4)">فصل چهارم</li>
+    </ul>
+    <li onclick="toggleFontMenu()">تغییر فونت ▸</li>
+<ul id="fontMenu" class="sbmenu">
+  <li onclick="changeFont('Vazirmatn')">وزیرمتن</li>
+  <li onclick="changeFont('Sahel')">ساحل</li>
+  <li onclick="changeFont('Shabnam')">شبنم</li>
+  <li onclick="changeFont('Lalezar')">لاله‌زار</li>
+  <li onclick="changeFont('IranNastaliq')">ایران نستعلیق</li>
+</ul>
+   <li onclick="openFeedback()">ارسال نظر</li>
+   <li onclick="openAbout('book')">درباره کتاب</li>
+  <li onclick="openAbout('author')">درباره نویسنده</li>
+    <li onclick="toggleTheme()">تغییر تم</li>
+  </ul>
+</div>
+<div class="overlay" id="overlay"></div>
+<main id="chapters">
+<div id="chapter0"class="" onclick="openChapter(0)"><h3> پیش گفتار </h3><p> در مورد این کتاب </p></div>
+<div class="chapter-card" onclick="openChapter(1)"><h3>فصل اول</h3><p>دو سیلی عاشقانه</p></div>
+<div class="chapter-card" onclick="openChapter(2)"><h3>فصل دوم</h3><p>آغاز یک خواب طولانی</p></div>
+  <div class="chapter-card" onclick="openChapter(3)"><h3>فصل سوم</h3><p>شروع یک ماجرا</p></div>
+<div class="chapter-card" onclick="openChapter(4)"><h3>فصل چهارم</h3><p>دو سیلی عاشقانه</p></div>
+<div class="chapter-card" onclick="openChapter(5)"><h3>فصل پنجم</h3><p>آغاز یک خواب طولانی</p></div>
+  <div class="chapter-card" onclick="openChapter(6)"><h3>فصل ششم</h3><p>شروع یک ماجرا</p></div>
+<div class="chapter-card" onclick="openChapter(7)"><h3>فصل هفتم</h3><p>دو سیلی عاشقانه</p></div>
+<div class="chapter-card" onclick="openChapter(8)"><h3>فصل هشتم</h3><p>آغاز یک خواب طولانی</p></div>
+  <div class="chapter-card" onclick="openChapter(9)"><h3>فصل نهم</h3><p>شروع یک ماجرا</p></div>
+<div class="chapter-card" onclick="openChapter(10)"><h3>فصل دهم</h3><p>دو سیلی عاشقانه</p></div>
+<div class="chapter-card" onclick="openChapter(11)"><h3>فصل یازدهم</h3><p>آغاز یک خواب طولانی</p></div>
+ <div class="chapter-card" onclick="openChapter(12)"><h3>فصل دوازدهم</h3><p>شروع یک ماجرا</p></div>
+<div class="chapter-card" onclick="openChapter(13)"><h3>فصل سیزدهم</h3><p>دو سیلی عاشقانه</p></div>
+<div class="chapter-card" onclick="openChapter(14)"><h3>آخرین فصل</h3><p>آغاز یک خواب طولانی</p></div>
+</main>
+  
+
+<div id="reader">
+<div class="reader-header">
+<h2 id="readerTitle">فصل اول</h2>
+     <button id="readerMenuToggle">☰</button>
+<button onclick="closeReader()">✖</button>
+</div>
+<div id="fontControls">
+<button id="fontDecrease" onclick="changeFontSize(-1)">A-</button>
+<button id="fontIncrease" onclick="changeFontSize(1)">A+</button>
+</div>
+<div class="page-container" id="pageContainer"></div>
+<div class="reader-bottom">
+<button class="nav-left" onclick="prevPage()">⬅ قبلی</button>
+<div class="page-indicator" id="pageIndicator">صفحه 1 / N</div>
+<button class="nav-right" onclick="nextPage()">بعدی ➡</button>
+</div>
+</div>
+
+<script>
+// Splash
+window.addEventListener('load',()=>{
+  const splash=document.getElementById('splash');
+  setTimeout(()=>{
+    splash.classList.add('hidden');
+  },1500);
+});
+
+// Theme
+function setTheme(theme) {
+  const body = document.body;
+  body.classList.toggle('dark', theme === 'dark');
+  localStorage.setItem('theme', theme);
+
+  // تغییر آیکون‌ها بر اساس مود
+  const icon = theme === 'dark' ? '☀️' : '🌙';
+  document.getElementById('themeToggle').textContent = icon;
+  const readerBtn = document.getElementById('readerThemeButton');
+  if (readerBtn) readerBtn.textContent = icon;
+}
+
+function toggleTheme() {
+  const isDark = document.body.classList.contains('dark');
+  setTheme(isDark ? 'light' : 'dark');
+}
+
+// هنگام بارگذاری صفحه
+setTheme(localStorage.getItem('theme') || 'light');
+// Sidebar
+const sidebar=document.getElementById('sidebar');
+const overlay=document.getElementById('overlay');
+document.getElementById('menuToggle').addEventListener('click',()=>{sidebar.classList.remove('hidden');overlay.classList.add('active');});
+overlay.addEventListener('click',()=>{sidebar.classList.add('hidden');overlay.classList.remove('active');});
+const menuChapters = document.getElementById('menuChapters');
+const submenuChapters = document.getElementById('submenuChapters');
+
+menuChapters.addEventListener('click', () => {
+  submenuChapters.classList.toggle('show');
+});
+  document.getElementById('readerMenuToggle').addEventListener('click',()=>{
+  sidebar.classList.remove('hidden');
+  overlay.classList.add('active');
+});
+// About
+function openAbout(type){
+  let pages = [];
+  let title = "";
+
+  if(type === 'book'){
+    title = "درباره کتاب";
+    pages = [
+      `<p>این یک کتاب نمونه است.</p>`,
+      `<p>متن درباره کتاب اینجا قرار می‌گیرد...</p>`
+    ];
+  } else {
+    title = "درباره نویسنده";
+    pages = [
+      `<p>این داستان، محصول دنیای خیالی و پرهیجان ذهن یک پسر بیست و چند ساله است که در دل پاکستان زندگی می‌کند. از کودکی، نوشتن برای او راهی بوده تا احساسات پیچیده، شور و اشتیاق‌های پنهان و لحظات تلخ و شیرین زندگی را به کاغذ بیاورد. نوشتن برای او نه تنها یک هنر، بلکه نوعی زندگی کردن است، و هر داستان فرصتی است برای کاوش در قلب انسان‌ها و پیچیدگی‌های عشق و روابط انسانی.<br>این کتاب تنها آغاز مسیر او در دنیای داستان‌سرایی است. در آینده، شما شاهد آثار متنوع‌تر، جسورانه‌تر و حتی متفاوت‌تری خواهید بود که هر کدام پنجره‌ای تازه به دنیای احساسات باز می‌کنند.<br>خواننده گرامی، نظر و برداشت شما از این اثر برای نویسنده ارزشمند است و هر بازخوردی، چراغی روشن برای مسیر نویسندگی او خواهد بود. از شما دعوت می‌شود که با نگاه و قلب خود، با داستان همراه شوید و صدای خود را با نویسنده در میان بگذارید.
+</p>`,
+    ];
+  }
+
+  // مثل فصل‌ها مقداردهی می‌کنیم
+  currentChapter = -1; // یعنی فصل خاصی نیست
+  currentPage = 0;
+  fontSize = 18;
+
+  const container = document.getElementById('pageContainer');
+  container.innerHTML = "";
+  pages.forEach((p,i)=>{
+    const div = document.createElement('div');
+    div.className = "page";
+    div.innerHTML = p;
+    div.style.transform = `translateX(${(i-currentPage)*100}%)`;
+    div.style.fontSize = fontSize+"px";
+    container.appendChild(div);
+  });
+
+  document.getElementById("readerTitle").textContent = title;
+  document.getElementById("pageIndicator").textContent = `صفحه ${currentPage+1} / ${pages.length}`;
+  document.getElementById("reader").style.display = "flex";
+}
+
+// Chapters
+let chapters=[
+{title:'پیش گفتار',pages:[``]},
+{title:'فصل اول',pages:[``]},  
+{title:'فصل دوم',pages:[``]},  
+{title:'فصل سوم',pages:[``]},
+{title:'فصل چهارم',pages:[``]},
+{title:'فصل پنجم',pages:[``]},
+{title:'فصل ششم',pages:[``]},
+{title:'فصل هفتم',pages:[``]},
+{title:'فصل هشتم',pages:[``]},
+{title:'فصل نهم',pages:[``]},
+{title:'فصل دهم',pages:[``]},
+{title:'فصل یازدهم',pages:[``]},
+{title:'فصل دازدهم',pages:[``]},
+{title:'فصل سیزدهم',pages:[``]},
+{title:'فصل چهاردهم',pages:[``]},
+];  
+
+// نمایش صفحه
+function renderPage(content, container) {
+  container.innerHTML = content
+    .split("\n\n") // دو خط خالی = پاراگراف جدید
+    .map(para => `<div class="para">${para.trim()}</div>`)
+    .join("");
+}
+
+// وقتی صفحه نمایش داده میشه
+function renderPage(content, container) {
+  container.innerHTML = content
+    .split("\n\n") // دو خط خالی = پاراگراف جدید
+    .map(para => `<p>${para.trim()}</p>`)
+    .join("");
+}
+
+let currentChapter=0, currentPage=0, fontSize=10;
+const container=document.getElementById('pageContainer');
+
+function openChapter(i){currentChapter=i;currentPage=0;fontSize=16;setupPages();document.getElementById('reader').style.display='flex';sidebar.classList.add('hidden');overlay.classList.remove('active');}
+function closeReader(){document.getElementById('reader').style.display='none';}
+
+function setupPages(){
+  container.innerHTML='';
+  chapters[currentChapter].pages.forEach((p,i)=>{
+    const div=document.createElement('div');
+    div.className='page';
+    div.innerHTML = p;
+    div.style.fontSize=fontSize+'px';
+    div.style.transform=`translateX(${i*100}%)`;
+    container.appendChild(div);
+  });
+  updateReader();
+}
+
+function updateReader(){
+  const pages = container.children;
+  for(let i = 0; i < pages.length; i++){
+    pages[i].style.transition = 'transform 0.3s';
+    pages[i].style.transform = `translateX(${(currentPage - i) * 100}%)`; // معکوس جهت
+  }
+  document.getElementById('readerTitle').textContent = chapters[currentChapter].title;
+  document.getElementById('pageIndicator').textContent = `صفحه ${currentPage+1} / ${chapters[currentChapter].pages.length}`;
+}
+
+function nextPage(){if(currentPage<chapters[currentChapter].pages.length-1){currentPage++;updateReader();}}
+function prevPage(){if(currentPage>0){currentPage--;updateReader();}}
+function changeFontSize(d){fontSize=Math.max(12,Math.min(30,fontSize+d));const pages=container.children;for(let i=0;i<pages.length;i++){pages[i].style.fontSize=fontSize+'px';}}
+
+// Swipe اصلاح شده
+// Swipe RTL اصلاح شده
+let touchStartX = 0;
+container.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+});
+container.addEventListener('touchend', e => {
+  let diff = e.changedTouches[0].clientX - touchStartX;
+  if(diff > 50) nextPage();    // کشیدن به راست -> صفحه بعد
+  else if(diff < -50) prevPage(); // کشیدن به چپ -> صفحه قبلی
+});
+</script>
+  <div id="aboutBox" style="display:none; position:fixed; top:50%; left:50%;
+transform:translate(-50%,-50%); background:#fff; padding:20px; border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.3); z-index:1000; max-width:400px; text-align:center;">
+  <h3 id="aboutTitle"></h3>
+  <p id="aboutText"></p>
+  <button onclick="closeAbout()">بستن</button>
+</div>
+  <!-- ارسال نظر -->
+<div id="feedbackBox" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeFeedback()">&times;</span>
+    <h2>ارسال نظر</h2>
+
+    <form action="https://formspree.io/f/xblzrkrq" method="POST" accept-charset="UTF-8">
+      <label>ایمیل شما:</label>
+      <input type="email" name="email" required>
+
+      <label>پیام شما:</label>
+      <textarea name="message" required></textarea>
+
+      <button type="submit">ارسال</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function openFeedback(){
+  document.getElementById("feedbackBox").style.display = "block";
+}
+function closeFeedback(){
+  document.getElementById("feedbackBox").style.display = "none";
+}
+
+function toggleFontMenu(){
+  let menu = document.getElementById("fontMenu");
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+// لیست فونت‌ها با نام صحیح
+const FONT_MAP = {
+  "Vazirmatn": "'Vazirmatn', sans-serif",
+  "Sahel": "'Sahel', sans-serif",
+  "Shabnam": "'Shabnam', sans-serif",
+  "Lalezar": "'Lalezar', cursive",
+  "IranNastaliq": "'IranNastaliq', serif"
+};
+
+// تغییر فونت کل صفحه
+function changeFont(fontKey){
+  let fontFamily = FONT_MAP[fontKey] || fontKey;
+
+  // روی کل body اعمال می‌کنیم
+  document.body.style.fontFamily = fontFamily;
+
+  // روی reader و صفحات هم اعمال شود (اضافی برای اطمینان)
+  const container = document.getElementById("pageContainer");
+  if(container){
+    container.style.fontFamily = fontFamily;
+    container.querySelectorAll(".page").forEach(p => {
+      p.style.fontFamily = fontFamily;
+    });
+  }
+
+  localStorage.setItem("selectedFont", fontFamily);
+}
+
+// هنگام بارگذاری صفحه فونت ذخیره‌شده را برگردانیم
+window.addEventListener("DOMContentLoaded", () => {
+  let savedFont = localStorage.getItem("selectedFont");
+  if(savedFont){
+    document.body.style.fontFamily = savedFont;
+    const container = document.getElementById("pageContainer");
+    if(container){
+      container.style.fontFamily = savedFont;
+      container.querySelectorAll(".page").forEach(p => {
+        p.style.fontFamily = savedFont;
+      });
+    }
+  }
+});
+  // این صرفاً یک نمونه است، در WebToApp باید در قسمت AdMob ID اپ جایگذاری شود
+const interstitialAdUnitId = 'ca-app-pub-3940256099942544/1033173712';
+console.log("Interstitial Ad Unit ID ready:", interstitialAdUnitId);
+</script>
+  <!-- AdMob Banner Test Code -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3940256099942544"
+     data-ad-slot="6300978111"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
+</html>
